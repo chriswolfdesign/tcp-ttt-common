@@ -5,6 +5,7 @@ import (
 	. "github.com/onsi/gomega"
 
 	"tcp-ttt-common/model"
+	"tcp-ttt-common/model/enums"
 )
 
 var _ = Describe("Board", func() {
@@ -15,7 +16,7 @@ var _ = Describe("Board", func() {
 
 				for i := range 3 {
 					for j := range 3 {
-						Expect(board.Board[i][j]).To(Equal(0))
+						Expect(board.Board[i][j]).To(Equal(enums.PLAYER_ONE))
 					}
 				}
 			})
