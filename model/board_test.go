@@ -5,7 +5,7 @@ import (
 	. "github.com/onsi/gomega"
 
 	"tcp-ttt-common/model"
-	"tcp-ttt-common/model/enums"
+	"tcp-ttt-common/enums"
 	"tcp-ttt-common/strings"
 )
 
