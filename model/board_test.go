@@ -16,7 +16,7 @@ var _ = Describe("Board", func() {
 
 				for i := range 3 {
 					for j := range 3 {
-						Expect(board.Board[i][j]).To(Equal(enums.PLAYER_ONE))
+						Expect(board.Board[i][j]).To(Equal(enums.EMPTY))
 					}
 				}
 			})
