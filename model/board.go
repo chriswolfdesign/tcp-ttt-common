@@ -2,7 +2,7 @@ package model
 
 import (
 	"fmt"
-	"tcp-ttt-common/model/enums"
+	"tcp-ttt-common/enums"
 	"tcp-ttt-common/strings"
 )
 
