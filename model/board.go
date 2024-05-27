@@ -41,3 +41,69 @@ func (b *Board) MakeMove(row int, col int, player string) error {
 
 	return nil
 }
+
+func (b Board) GetWinner() string {
+	if b.hasPlayerWon(enums.PLAYER_ONE) {
+		return enums.PLAYER_ONE
+	}
+
+	if b.hasPlayerWon(enums.PLAYER_TWO) {
+		return enums.PLAYER_TWO
+	}
+
+	if b.emptySquares() == 0 {
+		return strings.DRAW
+	}
+
+	return strings.NOT_OVER
+}
+
+func (b Board) hasPlayerWon(player string) bool {
+	return b.hasPlayerWonByRow(player) || b.hasPlayerWonByCol(player) || b.hasPlayerWonByDiagonals(player)
+}
+
+func (b Board) hasPlayerWonByRow(player string) bool {
+	for i := range 3 {
+		if b.Board[i][0] == player && b.Board[i][1] == player && b.Board[i][2] == player {
+			return true
+		}
+	}
+
+	return false
+}
+
+func (b Board) hasPlayerWonByCol(player string) bool {
+	for i := range 3 {
+		if b.Board[0][i] == player && b.Board[1][i] == player && b.Board[2][i] == player {
+			return true
+		}
+	}
+
+	return false
+}
+
+func (b Board) hasPlayerWonByDiagonals(player string) bool {
+	if b.Board[0][0] == player && b.Board[1][1] == player && b.Board[2][2] == player {
+		return true
+	}
+
+	if b.Board[2][0] == player && b.Board[1][1] == player && b.Board[0][2] == player {
+		return true
+	}
+
+	return false
+}
+
+func (b Board) emptySquares() int {
+	res := 0
+
+	for i := range 3 {
+		for j := range 3 {
+			if b.Board[i][j] == enums.EMPTY {
+				res += 1
+			}
+		}
+	}
+
+	return res
+}
