@@ -82,4 +82,98 @@ var _ = Describe("Board", func() {
 			})
 		})
 	})
+
+	Describe("get winner tests", func() {
+		var board model.Board
+
+		BeforeEach(func() {
+			board = model.GenerateBoard()
+		})
+
+		When("player one has won by the first row", func() {
+			BeforeEach(func() {
+				board.MakeMove(0, 0, enums.PLAYER_ONE)
+				board.MakeMove(0, 1, enums.PLAYER_ONE)
+				board.MakeMove(0, 2, enums.PLAYER_ONE)
+			})
+
+			It("Returns player one as the winner", func() {
+				winner := board.GetWinner()
+
+				Expect(winner).To(Equal(enums.PLAYER_ONE))
+			})
+		})
+
+		When("player two has won by the first column", func() {
+			BeforeEach(func() {
+				board.MakeMove(0, 0, enums.PLAYER_TWO)
+				board.MakeMove(1, 0, enums.PLAYER_TWO)
+				board.MakeMove(2, 0, enums.PLAYER_TWO)
+			})
+
+			It("returns player two as the winner", func() {
+				winner := board.GetWinner()
+
+				Expect(winner).To(Equal(enums.PLAYER_TWO))
+			})
+		})
+
+		When("player one has won by the top-left to bottom-right diagonal", func() {
+			BeforeEach(func() {
+				board.MakeMove(0, 0, enums.PLAYER_ONE)
+				board.MakeMove(1, 1, enums.PLAYER_ONE)
+				board.MakeMove(2, 2, enums.PLAYER_ONE)
+			})
+
+			It("returns player one as the winner", func() {
+				winner := board.GetWinner()
+
+				Expect(winner).To(Equal(enums.PLAYER_ONE))
+			})
+		})
+
+		When("player two has won by the top-right to bottom-left diagonal", func() {
+			BeforeEach(func() {
+				board.MakeMove(2, 0, enums.PLAYER_TWO)
+				board.MakeMove(1, 1, enums.PLAYER_TWO)
+				board.MakeMove(0, 2, enums.PLAYER_TWO)
+			})
+
+			It("returns player two as the winner", func() {
+				winner := board.GetWinner()
+
+				Expect(winner).To(Equal(enums.PLAYER_TWO))
+			})
+		})
+
+		When("the game is not over", func() {
+			It("returns that no player has won the game yet", func() {
+				winner := board.GetWinner()
+
+				Expect(winner).To(Equal(strings.NOT_OVER))
+			})
+		})
+
+		When("nobody has won but there is no valid move left", func() {
+			BeforeEach(func() {
+				board.MakeMove(0, 0, enums.PLAYER_ONE)
+				board.MakeMove(0, 1, enums.PLAYER_TWO)
+				board.MakeMove(0, 2, enums.PLAYER_ONE)
+	
+				board.MakeMove(1, 0, enums.PLAYER_TWO)
+				board.MakeMove(1, 1, enums.PLAYER_ONE)
+				board.MakeMove(1, 2, enums.PLAYER_TWO)
+	
+				board.MakeMove(2, 0, enums.PLAYER_TWO)
+				board.MakeMove(2, 1, enums.PLAYER_ONE)
+				board.MakeMove(2, 2, enums.PLAYER_TWO)
+			})
+
+			It("returns the game was a draw", func() {
+				winner := board.GetWinner()
+
+				Expect(winner).To(Equal(strings.DRAW))
+			})
+		})
+	})
 })
