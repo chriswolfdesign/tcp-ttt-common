@@ -4,9 +4,9 @@ import (
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 
-	"tcp-ttt-common/model"
-	"tcp-ttt-common/enums"
-	"tcp-ttt-common/strings"
+	"github.com/chriswolfdesign/tcp-ttt-common/model"
+	"github.com/chriswolfdesign/tcp-ttt-common/enums"
+	"github.com/chriswolfdesign/tcp-ttt-common/strings"
 )
 
 var _ = Describe("Board", func() {
