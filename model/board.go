@@ -2,8 +2,8 @@ package model
 
 import (
 	"fmt"
-	"tcp-ttt-common/enums"
-	"tcp-ttt-common/strings"
+	"github.com/chriswolfdesign/tcp-ttt-common/enums"
+	"github.com/chriswolfdesign/tcp-ttt-common/strings"
 )
 
 type Board struct {
