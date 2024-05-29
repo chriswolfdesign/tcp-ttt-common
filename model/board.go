@@ -24,6 +24,17 @@ func GenerateBoard() Board {
 	}
 }
 
+func (b Board) PrintBoard() {
+	fmt.Println("   0   1   2")
+	for i := range 3 {
+		fmt.Printf("%d ", i)
+		for j := range 3 {
+			fmt.Printf("[%s] ", b.Board[i][j])
+		}
+		fmt.Println()
+	}
+}
+
 func (b *Board) MakeMove(row int, col int, player string) error {
 	if player != enums.PLAYER_ONE && player != enums.PLAYER_TWO {
 		return fmt.Errorf(strings.INCORRECT_PLAYER_VALUE)
@@ -107,3 +118,4 @@ func (b Board) emptySquares() int {
 
 	return res
 }
+
