@@ -3,13 +3,16 @@ package tcp_payloads
 import "github.com/chriswolfdesign/tcp-ttt-common/strings"
 
 type PlayerOnboardingResponse struct {
-	Status string
+	Status      string
+	Player      string
 	PayloadType string
 }
 
-func GeneratePlayerOnboardingResponse(status string) PlayerOnboardingResponse {
+func GeneratePlayerOnboardingResponse(status, player string) PlayerOnboardingResponse {
 	return PlayerOnboardingResponse{
-		Status: status,
+		Status:      status,
+		Player:      player,
 		PayloadType: strings.TYPE_ONBOARDING_RESPONSE,
 	}
 }
+
