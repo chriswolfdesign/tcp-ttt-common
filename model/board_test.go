@@ -4,8 +4,8 @@ import (
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 
-	"github.com/chriswolfdesign/tcp-ttt-common/model"
 	"github.com/chriswolfdesign/tcp-ttt-common/enums"
+	"github.com/chriswolfdesign/tcp-ttt-common/model"
 	"github.com/chriswolfdesign/tcp-ttt-common/strings"
 )
 
@@ -159,11 +159,11 @@ var _ = Describe("Board", func() {
 				board.MakeMove(0, 0, enums.PLAYER_ONE)
 				board.MakeMove(0, 1, enums.PLAYER_TWO)
 				board.MakeMove(0, 2, enums.PLAYER_ONE)
-	
+
 				board.MakeMove(1, 0, enums.PLAYER_TWO)
 				board.MakeMove(1, 1, enums.PLAYER_ONE)
 				board.MakeMove(1, 2, enums.PLAYER_TWO)
-	
+
 				board.MakeMove(2, 0, enums.PLAYER_TWO)
 				board.MakeMove(2, 1, enums.PLAYER_ONE)
 				board.MakeMove(2, 2, enums.PLAYER_TWO)
